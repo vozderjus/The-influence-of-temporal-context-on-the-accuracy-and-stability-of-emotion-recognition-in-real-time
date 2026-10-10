@@ -1,5 +1,7 @@
 # Влияние временного контекста на точность и стабильность распознавания эмоций в видеопотоке реального времени.
-
+```
+Ссылка на статью: https://docs.google.com/document/d/1BJKtfX-XL6iekiPXK8MDyhA588czm2ZpGAOzQ-s3dvM/edit?usp=sharing
+```
 ---
 
 ## Цель проекта:
