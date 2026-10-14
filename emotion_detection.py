@@ -26,7 +26,7 @@ def get_emotions(user_image_path : str | None) -> dict:
               'dominant_emotion': '',
               'inference_time': 0.0}
 
-    if user_image_path is None:
+    if not isinstance(user_image_path, str):
         return result
 
     start_time = perf_counter()
