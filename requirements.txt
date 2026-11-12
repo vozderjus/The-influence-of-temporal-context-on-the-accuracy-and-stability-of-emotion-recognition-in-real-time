@@ -1,0 +1,17 @@
+streamlit
+deepface
+transformers
+torch
+torchvision
+tensorflow
+tf-keras
+mediapipe
+opencv-python-headless
+Pillow
+numpy
+pandas
+matplotlib
+fpdf2
+streamlit-webrtc
+imageio-ffmpeg
+av

@@ -1,2 +1,24 @@
+# Виртуальные окружения
 .venv/
+venv/
+
+# Тестовые картинки для emotion_detection.py
 .test_images/
+
+# Датасеты (CREMA-D и др.) — большие, скачиваются отдельно
+artifacts/
+
+# Модели скачиваются автоматически при первом запуске
+models/
+*.tflite
+*.task
+
+# Python
+__pycache__/
+*.pyc
+
+# IDE / ОС
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

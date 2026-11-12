@@ -29,3 +29,42 @@
 
 6. Какой из исследуемых методов обеспечивает лучший баланс между качеством классификации, стабильностью, FPS и latency в режиме реального времени?
 
+
+
+## Структура кода (ветка `Ivn_Chel`)
+
+| Файл | Назначение |
+|---|---|
+| `app.py` | Интерфейс Streamlit: вкладки «Фото», «Видео», «Веб-камера» |
+| `emotion_detection.py` | `get_emotions()` — распознавание эмоций (DeepFace / ViT), 6 классов |
+| `face_detection.py` | Поиск лиц MediaPipe BlazeFace, автоскачивание модели в `models/` |
+| `visualization.py` | Рамки и подписи на кадре, цвета и русские названия эмоций |
+| `report.py` | PDF-отчёт: график эмоций по времени и ключевые кадры |
+| `docs/PROGRESS.md` | Что сделано, что осталось, известные проблемы |
+| `docs/instruction.html` | Подробная инструкция по установке и запуску |
+
+Классы эмоций (как в CREMA-D): `angry`, `disgust`, `fear`, `happy`, `sad`, `neutral`.
+
+## Запуск
+
+Нужен Python **3.10 или 3.11** (TensorFlow не ставится на 3.13+).
+
+Windows:
+```
+py -3.11 -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+macOS / Linux:
+```
+python3.11 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+Приложение откроется на http://localhost:8501. При первом запуске скачиваются модели (BlazeFace ~225 КБ, веса DeepFace, ViT ~350 МБ).
+
+Датасет CREMA-D кладётся в `artifacts/CREMA-D-small/` (в git не попадает). Видео лежат в Git LFS: после клонирования нужно выполнить `git lfs pull --include "VideoFlash/*"`.

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Инструкция по запуску Emotion Project</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.7;
+    color: #1a1a2e;
+    background: #f8f9fb;
+    padding: 24px;
+  }
+  .container { max-width: 780px; margin: 0 auto; }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #1a1a2e;
+  }
+  .subtitle { color: #666; margin-bottom: 32px; font-size: 15px; }
+
+  h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 36px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #e0e0e0;
+    color: #1a1a2e;
+  }
+  h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 20px 0 8px;
+    color: #333;
+  }
+
+  p { margin: 8px 0; }
+
+  .warn {
+    background: #fff3cd;
+    border-left: 4px solid #f0ad4e;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  .info {
+    background: #e8f4fd;
+    border-left: 4px solid #4a9eda;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  .success {
+    background: #e6f9e6;
+    border-left: 4px solid #4caf50;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+
+  code {
+    background: #eef1f5;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-family: "Cascadia Code", "Fira Code", Consolas, monospace;
+    font-size: 14px;
+    color: #c7254e;
+  }
+  pre {
+    background: #1e1e2e;
+    color: #cdd6f4;
+    padding: 14px 18px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 10px 0;
+    font-family: "Cascadia Code", "Fira Code", Consolas, monospace;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  ul, ol { margin: 8px 0 8px 24px; }
+  li { margin: 4px 0; }
+
+  .files-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+  .files-table th {
+    background: #f0f0f5;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid #ddd;
+  }
+  .files-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #eee;
+  }
+  .files-table tr:hover td { background: #f8f8fc; }
+
+  .step-num {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background: #4a9eda;
+    color: white;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 14px;
+    margin-right: 8px;
+    flex-shrink: 0;
+  }
+  .step-header {
+    display: flex;
+    align-items: center;
+    margin: 36px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #e0e0e0;
+  }
+  .step-header h2 {
+    margin: 0;
+    border: none;
+    padding: 0;
+  }
+
+  .time-badge {
+    display: inline-block;
+    background: #f0f0f5;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 13px;
+    color: #555;
+    margin: 4px 0;
+  }
+
+  .problem {
+    margin: 16px 0;
+    padding: 14px 16px;
+    background: white;
+    border: 1px solid #e8e8ee;
+    border-radius: 8px;
+  }
+  .problem h3 {
+    margin: 0 0 6px;
+    color: #c0392b;
+    font-size: 15px;
+  }
+  .problem p { margin: 4px 0; font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>🎭 Инструкция по запуску Emotion Project</h1>
+<p class="subtitle">Пошаговая инструкция для Windows, macOS и Linux</p>
+
+<!-- ========== ФАЙЛЫ ========== -->
+<h2>Что нужно передать</h2>
+
+<p>Проект берётся из git-репозитория (ветка <code>Ivn_Chel</code>). Нужны все <code>.py</code>-файлы из корня и <code>requirements.txt</code>:</p>
+
+<table class="files-table">
+  <tr>
+    <th>Файл</th>
+    <th>Что это</th>
+  </tr>
+  <tr><td><code>app.py</code></td><td>Интерфейс Streamlit (точка входа)</td></tr>
+  <tr><td><code>emotion_detection.py</code></td><td>Распознавание эмоций (DeepFace / ViT)</td></tr>
+  <tr><td><code>face_detection.py</code></td><td>Поиск лиц (BlazeFace)</td></tr>
+  <tr><td><code>visualization.py</code></td><td>Рамки, подписи, цвета</td></tr>
+  <tr><td><code>report.py</code></td><td>PDF-отчёт</td></tr>
+  <tr><td><code>requirements.txt</code></td><td>Список библиотек Python</td></tr>
+</table>
+
+<div class="info">
+  Модель <code>blaze_face_short_range.tflite</code> передавать <strong>не нужно</strong> — она скачивается автоматически в папку <code>models/</code> при первом запуске.<br>
+  Папку <code>venv</code> тоже <strong>не отправлять</strong> — она создаётся заново на каждом компьютере.
+</div>
+
+<!-- ========== ШАГ 1 ========== -->
+<div class="step-header">
+  <span class="step-num">1</span>
+  <h2>Установить Python</h2>
+</div>
+
+<h3>Windows</h3>
+<ol>
+  <li>Открыть сайт <a href="https://python.org/downloads" target="_blank">python.org/downloads</a></li>
+  <li>Скачать <strong>Python 3.10 или 3.11</strong> (не 3.13 — могут быть проблемы с TensorFlow)</li>
+  <li>Запустить установщик</li>
+  <li><strong>Обязательно</strong> поставить галочку <strong>«Add Python to PATH»</strong> на первом экране</li>
+  <li>Нажать «Install Now»</li>
+</ol>
+<span class="time-badge">⏱ ~1–2 минуты</span>
+
+<h3>macOS</h3>
+<ol>
+  <li>Открыть Терминал (Cmd+Пробел → набрать «Terminal»)</li>
+  <li>Ввести: <code>python3 --version</code></li>
+  <li>Если Python не установлен — скачать с <a href="https://python.org/downloads" target="_blank">python.org/downloads</a></li>
+</ol>
+
+<h3>Linux</h3>
+<p>Python обычно уже установлен. Проверить: <code>python3 --version</code>. Если нет:</p>
+<pre>sudo apt update && sudo apt install python3 python3-pip python3-venv</pre>
+
+<!-- ========== ШАГ 2 ========== -->
+<div class="step-header">
+  <span class="step-num">2</span>
+  <h2>Подготовить папку проекта</h2>
+</div>
+
+<div class="warn">
+  <strong>⚠️ Важно: НЕ размещать в облачных папках!</strong><br>
+  Папка проекта <strong>не должна</strong> находиться в: OneDrive, Google Drive, Dropbox, iCloud.<br>
+  Облачные сервисы мешают установке библиотек Python и вызывают ошибки.
+</div>
+
+<h3>Где создать папку</h3>
+<ul>
+  <li><strong>Windows:</strong> <code>C:\Projects\emotion_project\</code></li>
+  <li><strong>macOS:</strong> <code>~/Projects/emotion_project/</code></li>
+  <li><strong>Linux:</strong> <code>~/Projects/emotion_project/</code></li>
+</ul>
+
+<p>Склонировать репозиторий в эту папку (или скопировать в неё файлы проекта).</p>
+
+<!-- ========== ШАГ 3 ========== -->
+<div class="step-header">
+  <span class="step-num">3</span>
+  <h2>Открыть терминал в папке проекта</h2>
+</div>
+
+<h3>Windows — 3 способа</h3>
+
+<p><strong>Способ 1</strong> (самый простой): Открыть папку <code>C:\Projects\emotion_project</code> в Проводнике → щёлкнуть в адресной строке (там где написан путь) → написать <code>cmd</code> → нажать Enter.</p>
+
+<p><strong>Способ 2:</strong> Нажать <strong>Win+R</strong> → написать <code>cmd</code> → нажать Enter. Затем ввести:</p>
+<pre>cd C:\Projects\emotion_project</pre>
+
+<p><strong>Способ 3:</strong> В поиске Windows набрать «cmd» или «Командная строка» → открыть → ввести <code>cd C:\Projects\emotion_project</code></p>
+
+<h3>macOS</h3>
+<p>Открыть Терминал (Cmd+Пробел → «Terminal») → ввести:</p>
+<pre>cd ~/Projects/emotion_project</pre>
+
+<h3>Linux</h3>
+<p>Открыть терминал (Ctrl+Alt+T) → ввести:</p>
+<pre>cd ~/Projects/emotion_project</pre>
+
+<!-- ========== ШАГ 4 ========== -->
+<div class="step-header">
+  <span class="step-num">4</span>
+  <h2>Создать виртуальное окружение</h2>
+</div>
+
+<p>Виртуальное окружение — изолированная среда для библиотек проекта, чтобы они не конфликтовали с другими программами.</p>
+
+<h3>Windows</h3>
+<pre>python -m venv venv</pre>
+<p>Если ошибка «python не найден» — попробовать <code>python3 -m venv venv</code> или <code>py -m venv venv</code>.</p>
+<p>Затем активировать:</p>
+<pre>venv\Scripts\activate</pre>
+<p>В начале строки появится <code>(venv)</code> — это значит окружение активно. ✅</p>
+
+<h3>macOS / Linux</h3>
+<pre>python3 -m venv venv
+source venv/bin/activate</pre>
+
+<span class="time-badge">⏱ ~10–30 секунд</span>
+
+<!-- ========== ШАГ 5 ========== -->
+<div class="step-header">
+  <span class="step-num">5</span>
+  <h2>Установить библиотеки</h2>
+</div>
+
+<p>Убедиться, что в терминале виден <code>(venv)</code> в начале строки. Ввести:</p>
+<pre>pip install -r requirements.txt</pre>
+
+<span class="time-badge">⏱ от 5 до 20 минут (зависит от скорости интернета)</span>
+<span class="time-badge">📦 ~3–5 ГБ (TensorFlow, PyTorch и др.)</span>
+
+<div class="info">
+  Во время установки будут идти строки с загрузкой — это нормально. Дождаться, пока снова появится приглашение командной строки <code>(venv) C:\...></code>.<br><br>
+  <strong>Жёлтые предупреждения (warnings)</strong> — можно игнорировать.<br>
+  <strong>Красные ошибки (errors)</strong> — нельзя, см. раздел «Решение проблем».
+</div>
+
+<!-- ========== ШАГ 6 ========== -->
+<div class="step-header">
+  <span class="step-num">6</span>
+  <h2>Запустить приложение</h2>
+</div>
+
+<pre>streamlit run app.py</pre>
+
+<span class="time-badge">⏱ Первый запуск: 2–5 минут (загрузка моделей нейросетей)</span>
+
+<p>После запуска в терминале появится:</p>
+<pre>Local URL: http://localhost:8501</pre>
+
+<p>Браузер откроется автоматически. Если не открылся — скопировать адрес <code>http://localhost:8501</code> и вставить в браузер.</p>
+
+<div class="warn">
+  <strong>Не закрывать терминал</strong> пока работаете с приложением! Терминал — это сервер, без него сайт не работает.
+</div>
+
+<!-- ========== ПОВТОРНЫЙ ЗАПУСК ========== -->
+<div class="step-header">
+  <span class="step-num">✦</span>
+  <h2>Повторный запуск (каждый следующий раз)</h2>
+</div>
+
+<p>Каждый раз при запуске нужно выполнить только 3 команды:</p>
+
+<h3>Windows</h3>
+<pre>cd C:\Projects\emotion_project
+venv\Scripts\activate
+streamlit run app.py</pre>
+
+<h3>macOS / Linux</h3>
+<pre>cd ~/Projects/emotion_project
+source venv/bin/activate
+streamlit run app.py</pre>
+
+<div class="success">
+  Устанавливать библиотеки повторно <strong>не нужно</strong>. Шаги 1–5 делаются только один раз.
+</div>
+
+<!-- ========== ПРОБЛЕМЫ ========== -->
+<h2>🔧 Решение проблем</h2>
+
+<div class="problem">
+  <h3>«python не найден» или «python is not recognized»</h3>
+  <p>Python не добавлен в PATH. Решение: переустановить Python, на первом экране установщика поставить галочку <strong>«Add Python to PATH»</strong>. Попробовать также <code>python3</code> или <code>py</code> вместо <code>python</code>.</p>
+</div>
+
+<div class="problem">
+  <h3>ImportError: cannot import name 'pipeline' from 'transformers'</h3>
+  <p>Самая частая причина — папка проекта находится в OneDrive или другом облачном хранилище. Решение:</p>
+  <ol>
+    <li>Создать новую папку (например <code>C:\Projects\emotion_project</code>)</li>
+    <li>Скопировать туда файлы проекта</li>
+    <li>Удалить старый <code>venv</code></li>
+    <li>Повторить шаги 3–6 заново</li>
+  </ol>
+</div>
+
+<div class="problem">
+  <h3>pip install зависает или выдаёт ошибки</h3>
+  <p>Проверить интернет-соединение. Попробовать:</p>
+  <pre>pip install --upgrade pip</pre>
+  <p>и повторить установку. На macOS/Linux может потребоваться:</p>
+  <pre>pip install --break-system-packages -r requirements.txt</pre>
+</div>
+
+<div class="problem">
+  <h3>Браузер не открывается</h3>
+  <p>Вручную открыть <code>http://localhost:8501</code> в любом браузере (Chrome, Firefox, Edge).</p>
+</div>
+
+<div class="problem">
+  <h3>Ошибка с .tflite файлом</h3>
+  <p>Модель скачивается в <code>models/blaze_face_short_range.tflite</code> при первом запуске — нужен интернет. Если скачивание прервалось, удалить папку <code>models/</code> и запустить снова.</p>
+</div>
+
+<div class="problem">
+  <h3>Квадратики вместо русских букв</h3>
+  <p>Отсутствует подходящий шрифт. На Linux установить:</p>
+  <pre>sudo apt install fonts-dejavu</pre>
+  <p>На macOS и Windows шрифты уже встроены — проблема обычно не возникает.</p>
+</div>
+
+<div class="problem">
+  <h3>Веб-камера не работает</h3>
+  <ul>
+    <li>Разрешить доступ к камере в браузере (всплывающее окно при первом использовании)</li>
+    <li>Закрыть другие программы, которые используют камеру (Zoom, Skype, Teams)</li>
+    <li>Попробовать другой браузер (Chrome работает лучше всего)</li>
+  </ul>
+</div>
+
+</div>
+</body>
+</html>
