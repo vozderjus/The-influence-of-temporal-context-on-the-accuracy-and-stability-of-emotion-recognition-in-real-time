@@ -1,0 +1,7 @@
+,pred_angry,pred_disgust,pred_fear,pred_happy,pred_sad,pred_neutral
+true_angry,113,1,79,7,14,165
+true_disgust,93,164,0,0,104,35
+true_fear,21,0,240,0,8,92
+true_happy,1,0,0,300,0,66
+true_sad,0,6,16,14,174,150
+true_neutral,2,0,13,0,23,314
