@@ -22,3 +22,9 @@ __pycache__/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Кэш покадровых предсказаний experiments/run_eval.py (большой, пересчитывается)
+results/cache/
+
+# Локальные пути к датасетам (свои на каждом компьютере)
+experiments/local_paths.json

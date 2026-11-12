@@ -40,6 +40,8 @@
 | `face_detection.py` | Поиск лиц MediaPipe BlazeFace, автоскачивание модели в `models/` |
 | `visualization.py` | Рамки и подписи на кадре, цвета и русские названия эмоций |
 | `report.py` | PDF-отчёт: график эмоций по времени и ключевые кадры |
+| `smoothing.py` | Причинное сглаживание вероятностей: `none`, `ma:N`, `ema:A` |
+| `experiments/` | Офлайн-оценка на RAVDESS / CREMA-D, см. `experiments/README.md` |
 | `docs/PROGRESS.md` | Что сделано, что осталось, известные проблемы |
 | `docs/instruction.html` | Подробная инструкция по установке и запуску |
 

@@ -29,9 +29,17 @@
 - Единая точка распознавания — `emotion_detection.get_emotions(image, model, is_face_crop)`;
   формат ответа `{'emotions', 'dominant_emotion', 'inference_time'}` менять нельзя
   (на него завязан код ветки `emotion_recognition`).
-- Модули без зависимости от Streamlit (`emotion_detection`, `face_detection`, `visualization`, `report`)
-  должны оставаться пригодными для офлайн-экспериментов на CREMA-D.
+- Модули без зависимости от Streamlit (`emotion_detection`, `face_detection`, `visualization`, `report`,
+  `smoothing`) должны оставаться пригодными для офлайн-экспериментов.
+- Сглаживание — только причинное (по прошлым кадрам), режимы задаются строкой `none` / `ma:N` / `ema:A`
+  (`smoothing.make_smoother`). Один и тот же код для офлайн-оценки и для приложения.
 - Комментарии и тексты интерфейса — на русском.
+
+## Эксперименты
+- `experiments/run_eval.py` — офлайн-оценка (метрики, сглаживание, задержка, FPS); описание в `experiments/README.md`.
+- Пути к датасетам — `experiments/local_paths.json` (локальный, не в git). Встроенный терминал
+  Claude Desktop не принимает кириллицу в командах — поэтому пути не передавать через `--root`, а брать из этого файла.
+- Кэш предсказаний `results/cache/` — не в git; итоговые CSV `results/<прогон>/` — коммитить.
 
 ## Окружение
 - Python 3.10/3.11 (TensorFlow не поддерживает 3.13+). Виртуальное окружение — `.venv/`.
